@@ -1,0 +1,220 @@
+\usepackage{etex} % Avoid error 'latex ! No room for a new \dimen .'
+
+%graphics
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{dsfont} % e.g. for indicator function
+
+
+% erlaubt \begin{pmatrix}[clc:cc] etc.
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Farbige Formeln mit korrektem Spacing: https://tex.stackexchange.com/questions/85033/colored-symbols
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\eps}{\varepsilon}
+
+\def \avec {\vec{a}}   \def \Avec {\vec{A}}   \def \mA {\vec{A}}   \def \ma {\vec{a}}
+\def \bvec {\vec{b}}   \def \Bvec {\vec{B}}   \def \mB {\vec{B}}   \def \mb {\vec{b}}
+\def \cvec {\vec{c}}   \def \Cvec {\vec{C}}   \def \mC {\vec{C}}   \def \mc {\vec{c}}
+\def \dvec {\vec{d}}   \def \Dvec {\vec{D}}   \def \mD {\vec{D}}   \def \md {\vec{d}}
+\def \evec {\vec{e}}   \def \Evec {\vec{E}}   \def \mE {\vec{E}}   \def \me {\vec{e}}
+\def \fvec {\vec{f}}   \def \Fvec {\vec{F}}   \def \mF {\vec{F}}   \def \mf {\vec{f}}
+\def \gvec {\vec{g}}   \def \Gvec {\vec{G}}   \def \mG {\vec{G}}   \def \mg {\vec{g}}
+\def \hvec {\vec{h}}   \def \Hvec {\vec{H}}   \def \mH {\vec{H}}   \def \mh {\vec{h}}
+\def \ivec {\vec{i}}   \def \Ivec {\vec{I}}   \def \mI {\vec{I}}   \def \mi {\vec{i}}
+\def \jvec {\vec{j}}   \def \Jvec {\vec{J}}   \def \mJ {\vec{J}}   \def \mj {\vec{j}}
+\def \kvec {\vec{k}}   \def \Kvec {\vec{K}}   \def \mK {\vec{K}}   \def \mk {\vec{k}}
+\def \lvec {\vec{l}}   \def \Lvec {\vec{L}}   \def \mL {\vec{L}}   \def \ml {\vec{l}}
+\def \mvec {\vec{m}}   \def \Mvec {\vec{M}}   \def \mM {\vec{M}}   \def \mm {\vec{m}}
+\def \nvec {\vec{n}}   \def \Nvec {\vec{N}}   \def \mN {\vec{N}}   \def \mn {\vec{n}}
+\def \ovec {\vec{o}}   \def \Ovec {\vec{O}}   \def \mO {\vec{O}}   \def \mo {\vec{o}}
+\def \pvec {\vec{p}}   \def \Pvec {\vec{P}}   \def \mP {\vec{P}}   \def \mp {\vec{p}}
+\def \qvec {\vec{q}}   \def \Qvec {\vec{Q}}   \def \mQ {\vec{Q}}   \def \mq {\vec{q}}
+\def \rvec {\vec{r}}   \def \Rvec {\vec{R}}   \def \mR {\vec{R}}   \def \mr {\vec{r}}
+\def \svec {\vec{s}}   \def \Svec {\vec{S}}   \def \mS {\vec{S}}   \def \ms {\vec{s}}
+\def \tvec {\vec{t}}   \def \Tvec {\vec{T}}   \def \mT {\vec{T}}   \def \mt {\vec{t}}
+\def \uvec {\vec{u}}   \def \Uvec {\vec{U}}   \def \mU {\vec{U}}   %\def \mu {\vec{u}}
+\def \vvec {\vec{v}}   \def \Vvec {\vec{V}}   \def \mV {\vec{V}}   \def \mv {\vec{v}}
+\def \wvec {\vec{w}}   \def \Wvec {\vec{W}}   \def \mW {\vec{W}}   \def \mw {\vec{w}}
+\def \xvec {\vec{x}}   \def \Xvec {\vec{X}}   \def \mX {\vec{X}}   \def \mx {\vec{x}}
+\def \yvec {\vec{y}}   \def \Yvec {\vec{Y}}   \def \mY {\vec{Y}}   \def \my {\vec{y}}
+\def \zvec {\vec{z}}   \def \Zvec {\vec{Z}}   \def \mZ {\vec{Z}}   \def \mz {\vec{z}}
+
+\def \alphavec        {\vec{\alpha}}      \def \malpha        {\vec{\alpha}}
+\def \betavec         {\vec{\beta}}       \def \mbeta         {\vec{\beta}}
+\def \gammavec        {\vec{\gamma}}      \def \mgamma        {\vec{\gamma}}
+\def \deltavec        {\vec{\delta}}      \def \mdelta        {\vec{\delta}}
+\def \epsilonvec      {\vec{\epsilon}}    \def \mepsilon      {\vec{\epsilon}}
+\def \epsvec          {\vec{\eps}}        \def \meps          {\vec{\eps}}
+\def \varepsilonvec   {\vec{\varepsilon}} \def \mvarepsilon   {\vec{\varepsilon}}
+\def \zetavec         {\vec{\zeta}}       \def \mzeta         {\vec{\zeta}}
+\def \etavec          {\vec{\eta}}        \def \meta          {\vec{\eta}}
+\def \thetavec        {\vec{\theta}}      \def \mtheta        {\vec{\theta}}
+\def \varthetavec     {\vec{\vartheta}}   \def \mvartheta     {\vec{\vartheta}}
+\def \iotavec         {\vec{\iota}}       \def \miota         {\vec{\iota}}
+\def \kappavec        {\vec{\kappa}}      \def \mkappa        {\vec{\kappa}}
+\def \lambdavec       {\vec{\lambda}}     \def \mlambda       {\vec{\lambda}}
+\def \muvec           {\vec{\mu}}         \def \mmu           {\vec{\mu}}
+\def \nuvec           {\vec{\nu}}         \def \mnu           {\vec{\nu}}
+\def \xivec           {\vec{\xi}}         \def \mxi          {\vec{\xi}}
+\def \pivec           {\vec{\pi}}         \def \mpi           {\vec{\pi}}
+\def \varpivec        {\vec{\varpi}}      \def \mvarpi        {\vec{\varpi}}
+\def \rhovec          {\vec{\rho}}        \def \mrho          {\vec{\rho}}
+\def \varrhovec       {\vec{\varrho}}     \def \mvarrho       {\vec{\varrho}}
+\def \sigmavec        {\vec{\sigma}}      \def \msigma        {\vec{\sigma}}
+\def \varsigmavec     {\vec{\varsigma}}   \def \mvarsigma     {\vec{\varsigma}}
+\def \tauvec          {\vec{\tau}}        \def \mtau          {\vec{\tau}}
+\def \upsilonvec      {\vec{\upsilon}}    \def \mupsilon      {\vec{\upsilon}}
+\def \phivec          {\vec{\phi}}        \def \mphi          {\vec{\phi}}
+\def \varphivec       {\vec{\varphi}}     \def \mvarphi       {\vec{\varphi}}
+\def \psivec          {\vec{\psi}}        \def \mpsi          {\vec{\psi}}
+\def \chivec          {\vec{\chi}}        \def \mchi          {\vec{\chi}}
+\def \omegavec        {\vec{\omega}}      \def \momega        {\vec{\omega}}
+
+\def \Gammavec   {\vec{\Gamma}}   \def \mGamma   {\vec{\Gamma}}
+\def \Deltavec   {\vec{\Delta}}   \def \mDelta   {\vec{\Delta}}
+\def \Thetavec   {\vec{\Theta}}   \def \mTheta   {\vec{\Theta}}
+\def \Lambdavec  {\vec{\Lambda}}  \def \mLambda  {\vec{\Lambda}}
+\def \Xivec      {\vec{\Xi}}      \def \mXi      {\vec{\Xi}}
+\def \Pivec      {\vec{\Pi}}      \def \mPi      {\vec{\Pi}}
+\def \Sigmavec   {\vec{\Sigma}}   \def \mSigma   {\vec{\Sigma}}
+\def \Upsilonvec {\vec{\Upsilon}} \def \mUpsilon {\vec{\Upsilon}}
+\def \Phivec     {\vec{\Phi}}     \def \mPhi     {\vec{\Phi}}
+\def \Psivec     {\vec{\Psi}}     \def \mPsi     {\vec{\Psi}}
+\def \Omegavec   {\vec{\Omega}}   \def \mOmega   {\vec{\Omega}}
+
+\def \nullvec {\vec{0}} \def \mnull {\vec{0}}
+\def \onevec {\vec{1}} \def \mone {\vec{1}}
+
+\newcommand{\Prob}{\mbox{P}}
+\newcommand{\Po}{\mbox{Po}}
+\newcommand{\spur}{\mbox{tr}}
+\newcommand{\spann}{\operatorname{span}}
+\newcommand{\df}{\mbox{df}}
+\newcommand{\CV}{\mbox{CV}}
+\newcommand{\GCV}{\operatorname{GCV}}
+\newcommand{\AIC}{\operatorname{AIC}}
+\newcommand{\BIC}{\operatorname{BIC}}
+\newcommand{\EW}{\mathbb{E}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\rk}{{\operatorname{rk}}}
+\newcommand{\diag}{{\operatorname{diag}}}
+\newcommand{\blockdiag}{{\operatorname{blockdiag}}}
+\newcommand{\bfsf}[1] {\textsf{\textbf{#1}}}
+\newcommand \myqq {\grqq$\;$}
+\newcommand {\Bias}{{ \operatorname{Bias} }}
+\newcommand {\MSE} {{ \operatorname{MSE} }}
+\newcommand {\MISE} {{ \operatorname{MISE} }}
+\newcommand {\RMSE} {{ \operatorname{MISE} }}
+\newcommand {\SSE} {{ \operatorname{SSE} }}
+\newcommand {\SST} {\operatorname{SST}}
+\newcommand {\SSR} {\operatorname{SSR}}
+\newcommand{\sigmaeps} {\sigma^2_{\eps}}
+ % \DeclareMathOperator{\Exp}{Exp}
+
+\newcommand{\iid} {\operatorname{i.i.d.}}
+\newcommand{\opvec}{\operatorname{vec}}
+\newcommand{\EV}{\operatorname{E}}
+\newcommand{\mean}{\operatorname{mean}}
+\newcommand{\snr}{\operatorname{SNR}}
+\newcommand{\sd}{\operatorname{sd}}
+\newcommand{\riMSE}{\operatornamewithlimits{riMSE}}
+\newcommand{\pen}{\operatorname{pen}}
+\newcommand{\edf}{\operatorname{edf}}
+
+
+% Sets of numbers
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\C}{{\mathbb C}}
+
+% Sets in general
+\newcommand{\T}{{\mathcal T}}
+
+
+% Distributions
+\newcommand{\Bin}{\operatorname{\mathcal{Bin}}} % Binomial Distribution
+\newcommand{\Poi}{\operatorname{\mathcal{Po}}} % Poisson Distribution
+\newcommand{\Exp}{\operatorname{\mathcal{Exp}}} % 
+\newcommand{\Gauss}{\operatorname{\mathcal{N}}} 
+\newcommand{\No}{\operatorname{\mathcal{N}}} 
+\newcommand{\Ga}{\operatorname{\mathcal{\Gamma}}} 
+\newcommand{\GP}{\operatorname{\mathcal{GP}}} 
+\newcommand{\Be}{\operatorname{\mathcal{Be}}} 
+\newcommand{\IG}{\operatorname{\mathcal{IG}}}
+\newcommand{\U}{\operatorname{\mathcal{U}}} 
+\newcommand{\EF}{\operatorname{EF}} % simple exponential family
+\newcommand{\iidsim}{\stackrel{\text{iid}}{\sim}}
+\newcommand{\indsim}{\stackrel{\text{ind.}}{\sim}}
+\newcommand{\F}{\operatorname{\mathcal{P}}} 
+
+\newcommand{\Ind}{\mathds{1}}
+\newcommand{\etc}{, \ldots, }
+\newcommand{\dt}{\mathrm{d}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\trans}{^\top}
+\newcommand{\tr}{^\top}
+\newcommand{\2}{\frac{1}{2}}
+
+
+\DeclareMathOperator*{\argmin}{{arg\,min}}
+\DeclareMathOperator*{\argmax}{{arg\,max}}
+
+
+\newcommand{\dimm}[3]{\underset{\phantom{.}^{#2 \times #3}}{#1}}
+\newcommand{\matdim}[3]{\left[#1\right]__{\overset{#2}{{}^{#3}}} %[Xij]i = ..., j= ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Rlang}{\textsf{R}}
+\newcommand{\pkg}[1]{\texttt{\textbf{#1}}}
+\newcommand{\Rcmd}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\lra}{\Leftrightarrow}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\bi}{\begin{itemize}}%[itemsep=1ex,leftmargin=1cm]}
+\newcommand{\im}{\item}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\bea}{\begin{eqnarray*}}%[itemsep=1ex,leftmargin=1cm]}
+\newcommand{\eea}{\end{eqnarray*}}
+\newcommand{\bmat}[1]{\left[\begin{array}{*{#1}{c}}}
+\newcommand{\emat}{\end{array}\right]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\smallcitep}[1]{{{\scriptsize\parencite{#1}}}}
+

@@ -1,0 +1,98 @@
+\setbeamercovered{transparent} % was noch kommt, wird schon transparent angezeigt
+
+\usetheme{simplefs}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{caption}{\insertcaption}
+\setbeamertemplate{caption label separator}{}
+\setbeamerfont{alerted text}{series=\bfseries}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{bibliography item}{}
+\beamertemplatenavigationsymbolsempty
+\usepackage{appendixnumberbeamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[sfdefault]{roboto}
+% 1. https://tex.stackexchange.com/questions/394330/roboto-font-for-greek-letters/394336#394336 (needs xetex/luatex)
+% \usepackage{amsmath}
+% \usepackage{mathspec}
+% \setallmainfonts(Digits,Latin,Greek)[Scale=0.76]{Roboto}
+% \setallsansfonts[Scale=0.76]{Roboto}
+% 2. https://tex.stackexchange.com/questions/423877/use-sans-serif-math-operators-with-roboto (needs xetex/luatex)
+% \usepackage{unicode-math}
+% \setmathfont{Fira Math}
+% \setmathfont[range=up]{Roboto}
+% \setmathfont[range=it]{Roboto-Italic}
+% \setmathfont[range=\int]{Fira Math}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+			 backend = biber,
+			 citestyle = authoryear, 
+			 firstinits = true, 
+			 uniquename = init,
+			 maxbibnames = 4, 
+			 maxcitenames = 2,
+			 dashed = false,
+       style = authoryear, 
+       sorting = nyt,
+			 hyperref 
+			 ]{biblatex} 
+\usepackage{csquotes}
+\usepackage{hyperref}	
+
+% See also beamer.bbx
+\DeclareFieldFormat[article]{title}{#1}
+\DeclareFieldFormat[article]{pubstate}{\textit{#1}}
+
+\DeclareFieldFormat[manual]{title}{\texttt{#1}}
+\DeclareFieldFormat[manual]{url}{\url{#1}}
+\DeclareFieldFormat[manual]{subtitle}{\textit{#1} \addperiod} 
+  
+%\bibliography
+\addbibresource{XXX.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginSubsection[]
+{
+\ifnum \thesubsection > 1
+\begin{frame}[plain]<beamer>
+\frametitle{Outline}
+\tableofcontents[
+  currentsection,
+  sectionstyle=show/show,
+  subsectionstyle=show/shaded/hide
+]
+\end{frame}
+\else
+\fi
+}
+
+\AtBeginSection[]
+{
+\begin{frame}[plain]
+\frametitle{}
+\tableofcontents[
+  currentsection,
+  sectionstyle=show/show,
+  subsectionstyle=show/show/hide
+]
+\end{frame}
+}
+
+\AtBeginPart{
+\frame[plain]{\partpage}
+\begin{frame}[plain]
+\frametitle{}
+\tableofcontents[hideallsubsections]
+\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
